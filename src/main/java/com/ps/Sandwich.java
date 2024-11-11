@@ -49,4 +49,21 @@ public class Sandwich extends Product {
         toppings.remove(topping);
     }
     //get price override method
+    @Override
+    public double getPrice() {
+        double basePrice =0.0;
+        if (size == 4) {
+            basePrice = 5.50;
+        } else if (size == 8) {
+            basePrice = 7.00;
+        } else if (size == 12) {
+            basePrice = 8.50;
+        } else {
+            System.out.println("Command not found, please try again...");
+        }
+        for (Topping topping : toppings) {
+            basePrice += topping.getPrice();
+        }
+        return basePrice;
+    }
 }
