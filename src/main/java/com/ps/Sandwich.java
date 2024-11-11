@@ -9,7 +9,8 @@ public class Sandwich extends Product {
     private boolean isToasted;
     private List<Topping> toppings;
 
-    public Sandwich(int size, String breadType, boolean isToasted) {
+    public Sandwich(String name, double basePrice, int size, String breadType, boolean isToasted) {
+        super(name, basePrice);
         this.size = size;
         this.breadType = breadType;
         this.isToasted = isToasted;

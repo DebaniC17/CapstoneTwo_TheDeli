@@ -4,7 +4,8 @@ public class Drink extends Product{
     private String flavor;
     private String size;
 
-    public Drink(String flavor, String size) {
+    public Drink(String name, double basePrice, String flavor, String size) {
+        super(name, basePrice);
         this.flavor = flavor;
         this.size = size;
     }
@@ -24,6 +25,7 @@ public class Drink extends Product{
     public void setSize(String size) {
         this.size = size;
     }
+    @Override
     public double getPrice() {
         double price;
 
