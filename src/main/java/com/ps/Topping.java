@@ -17,39 +17,57 @@ public class Topping {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getType() {
         return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
     public double getPrice() {
-        if (category.equalsIgnoreCase("premium")) {
-            //if else statements throughout?? mmmmh switch statements?? both??
-            // premium
-            // regular = 0.0
-            // extra
+        //if (category.equalsIgnoreCase("premium")) {
+        //if else statements throughout?? mmmmh switch statements?? both??
+        // premium
+        // regular = 0.0
+        // extra
+        if (type.equalsIgnoreCase("meat")) {
+            if (size == 4) {
+                return 1.00;
+            } else if (size == 8) {
+                return 2.00;
+            } else if (size == 12) {
+                return 3.00;
+            }
+        } else if (type.equalsIgnoreCase("cheese")) {
+            if (size == 4) {
+                return 0.75;
+            } else if (size == 8) {
+                return 1.50;
+            } else if (size == 12) {
+                return 2.25;
+            }
+        } else if (category.equalsIgnoreCase("extra meat")) {
+            if (size == 4) {
+                return 0.50;
+            } else if (size == 8) {
+                return 1.00;
+            } else if (size == 12) {
+                return 1.50;
+            }
+
+        } else if (category.equalsIgnoreCase("extra cheese")) {
+            if (size == 4) {
+                return 0.30;
+            } else if (size == 8) {
+                return 0.60;
+            } else if (size == 12) {
+                return 0.90;
+            }
         }
+        //regular toppings
+        return 0.0;
+
     }
 }
+
