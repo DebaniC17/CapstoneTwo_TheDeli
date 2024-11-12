@@ -4,8 +4,11 @@ import java.util.Scanner;
 
 public class UserInterface {
     static Scanner commandScanner = new Scanner(System.in);
+    static Scanner inputScanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    private static Order order = new Order();
+
+    public static void display () {
         int mainCommand;
         do {
             System.out.println("Welcome to DELIcious sandwiches!");
@@ -76,20 +79,72 @@ public class UserInterface {
         } while (orderCommand != 0 );
     }
 
-    private static void handleCheckout() {
-    }
+    private static void handleAddSandwich() {
+        //another nested menu for built your own sandwich
+        System.out.println("Select a type of sandwich: ");
+        System.out.println("1) Built your own sandwich ");
+        System.out.println("2) BLT");
+        System.out.println("3) Philly cheese steak");
+        System.out.print("Selection: ");
+        int sandwichChoice = inputScanner.nextInt();
 
-    private static void displayOrder() {
-    }
 
+
+    }
+    private static void handleAddBagOfChips() {
+        int chipCommand = 0;
+        do {
+            System.out.println("Choose a flavor of chips: ");
+            System.out.println("1) Classic");
+            System.out.println("2) Flaming hot");
+            System.out.println("3) Jalapeno");
+            System.out.println("4) BBQ");
+            System.out.println("0) Return to order menu");
+            System.out.print("Selection: ");
+            int chipChoice = inputScanner.nextInt();
+
+            if (chipChoice == 0) {
+                System.out.println("Returning to order menu...");
+                return;
+            }
+
+            String flavor = "";
+            switch (chipChoice) {
+                case 1:
+                    flavor.equalsIgnoreCase("classic");
+                    break;
+
+                case 2:
+                    flavor.equalsIgnoreCase("flaming hot");
+                    break;
+
+                case 3:
+                    flavor.equalsIgnoreCase("jalapeno");
+                    break;
+
+                case 4:
+                    flavor.equalsIgnoreCase("bbq");
+                    break;
+
+                default:
+                    System.out.println("Selection not found, please try again.");
+                    continue;
+
+            }
+            BagOfChip chips = new BagOfChip("Chips", 1.50, flavor);
+            order.add(chips);
+            System.out.println(flavor + " chips added to order.");
+
+            System.out.println("Would you like to add another bag of chips?");
+            System.out.println("1) for yes");
+            System.out.println("2) for no");
+            chipCommand = inputScanner.nextInt();
+        } while ( chipCommand == 1);
+    }
     private static void handleAddDrink() {
     }
-
-    private static void handleAddBagOfChips() {
+    private static void displayOrder() {
     }
-
-    private static void handleAddSandwich() {
+    private static void handleCheckout() {
     }
-
-
 }
