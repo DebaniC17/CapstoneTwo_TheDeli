@@ -1,5 +1,6 @@
 package com.ps;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -16,7 +17,13 @@ public class UserInterface {
             System.out.println("1) To place an order");
             System.out.println("0) Exit application");
             System.out.print("Command: ");
-            mainCommand = commandScanner.nextInt();
+           // mainCommand = commandScanner.nextInt();
+
+            try {
+                mainCommand = commandScanner.nextInt();
+            } catch (InputMismatchException ime) {
+                mainCommand = 0;
+            }
 
             switch (mainCommand) {
                 case 1:
@@ -37,7 +44,7 @@ public class UserInterface {
 
     private static void placeOrder() {
         System.out.println("What's the name for the order?");
-        String name = commandScanner.nextLine();
+        String name = inputScanner.nextLine();
 
         System.out.println("What would you like to do with your order?");
         System.out.println("1) Add a sandwich");
@@ -47,7 +54,7 @@ public class UserInterface {
         System.out.println("5) Checkout");
         System.out.println("0) Start over");
         System.out.print("Selection: ");
-        int orderCommand = commandScanner.nextInt();
+        int orderCommand = inputScanner.nextInt();
 
         switch (orderCommand) {
             case 1:
@@ -102,6 +109,12 @@ public class UserInterface {
             System.out.println("0) Return to order menu");
             System.out.print("Selection: ");
             int chipChoice = inputScanner.nextInt();
+
+            try {
+                chipCommand = commandScanner.nextInt();
+            } catch (InputMismatchException ime) {
+                chipCommand = 0;
+            }
 
             if (chipChoice == 0) {
                 System.out.println("Returning to order menu...");
