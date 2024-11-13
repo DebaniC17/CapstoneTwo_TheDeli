@@ -46,9 +46,24 @@ public class Sandwich extends Product {
     public void addTopping(Topping topping) {
         toppings.add(topping);
     }
-    public void removeTopping(Topping topping) {
-        toppings.remove(topping);
+//    public void removeTopping(Topping topping) {
+//        toppings.remove(topping);
+//    }
+
+    public boolean removeTopping(String toppingName) {
+        for (int i =0; i < toppings.size(); i++) {
+            Topping topping = toppings.get(i);
+            if (topping.getName().equalsIgnoreCase(toppingName)) {
+                toppings.remove(i);
+                System.out.println(toppingName + " has been removed from sandwich.");
+                return true;
+            }
+        }
+        System.out.println("Topping " + toppingName + " not found.");
+        return false;
     }
+
+
     //get price override method
     @Override
     public double getPrice() {
@@ -67,4 +82,7 @@ public class Sandwich extends Product {
         }
         return basePrice;
     }
+
+   // public String getSandwichType() {
+    //}
 }
