@@ -38,7 +38,7 @@ public class Order {
        return totalPrice;
     }
 
-    public void add(BagOfChip chips) {
-    addProducts(chips);
-    }
+//    public void add(BagOfChip chips) {
+//    addProducts(chips);
+//    }
 }
