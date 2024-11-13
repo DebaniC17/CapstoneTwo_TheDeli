@@ -2,6 +2,7 @@ package com.ps;
 
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -429,8 +430,75 @@ public class UserInterface {
     }
 
     private static void displayOrder() {
+        System.out.println("Order details: ");
+        double totalCost = 0.0;
+
+        for (Product product : order.getProducts()) {
+            System.out.println("Product: " + product.getName());
+            System.out.println("Price: $" + String.format("%.2f", product.getBasePrice()));
+
+            if (product instanceof Sandwich) {
+                Sandwich sandwich = (Sandwich) product;
+                System.out.println("Size: " + sandwich.getSize() + " inches");
+                System.out.println("Bread type: " + sandwich.getBreadType());
+                System.out.println("Toasted: " + (sandwich.isToasted() ? "Yes" : "No"));
+
+                List<Topping> toppings = sandwich.getToppings();
+                if (toppings != null && !toppings.isEmpty()) {
+                    System.out.println("Toppings: ");
+                    for (Topping topping: toppings) {
+                        System.out.println(" " + topping.getName() + " (" + topping.getCategory() + ") " + String.format("%.2f", topping.getPrice()));
+
+                    }
+                }
+
+
+            } else if (product instanceof Drink) {
+                Drink drink = (Drink) product;
+                System.out.println("Flavor: " + drink.getFlavor());
+                System.out.println("Size: " + drink.getSize());
+
+            } else if (product instanceof BagOfChip) {
+                BagOfChip chips = (BagOfChip) product;
+                System.out.println("Flavor: " + chips.getFlavor());
+            }
+            System.out.println();
+            totalCost += product.getPrice();
+        }
+        System.out.println("Total price for order: $" + String.format("%.2f", totalCost));
     }
 
     private static void handleCheckout() {
+        int checkout;
+
+        System.out.println("What would you like to do with your order?");
+        System.out.println("1) Place order");
+        System.out.println("0) Start over");
+        System.out.print("Selection: ");
+
+        try {
+            checkout = inputScanner.nextInt();
+        } catch (InputMismatchException ime) {
+            System.out.println("Selection not found, please try again.");
+            inputScanner.nextLine();
+            return;
+        }
+         switch (checkout) {
+             case 1:
+                 System.out.println("Finalizing your order...");
+                 //save order method from receiptmanager
+                 System.out.println("Your order has been saved. Thank you, it will come out shortly!");
+                 order = new Order();
+                 break;
+
+             case 0:
+                 System.out.println("Starting over...");
+                 break;
+
+             default:
+                 System.out.println("Selection not found, please try again.")
+                 break;
+         }
+
     }
 }
