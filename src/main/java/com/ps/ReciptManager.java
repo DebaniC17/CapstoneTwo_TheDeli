@@ -41,7 +41,7 @@ public class ReciptManager {
                 bufferedWriter.newLine();
 
                 if (product instanceof Sandwich sandwich) {
-                    bufferedWriter.write("Size" + sandwich.getSize() + " inches");
+                    bufferedWriter.write("Size: " + sandwich.getSize() + " inches");
                    bufferedWriter.newLine();
                     bufferedWriter.write("Bread type: " + sandwich.getBreadType());
                    bufferedWriter.newLine();
@@ -67,13 +67,13 @@ public class ReciptManager {
                    bufferedWriter.newLine();
                     bufferedWriter.write("Size: " + drink.getSize());
                     bufferedWriter.newLine();
-                    bufferedWriter.write("Total Price: $" + String.format("%.2f", drink.getPrice()));
+                    bufferedWriter.write("Price: $" + String.format("%.2f", drink.getPrice()));
                     bufferedWriter.newLine();
 
                 } else if (product instanceof BagOfChip chips) {
                     bufferedWriter.write("Flavor: " + chips.getFlavor());
                     bufferedWriter.newLine();
-                    bufferedWriter.write("Total Price: $" + String.format("%.2f", chips.getPrice()));
+                    bufferedWriter.write("Price: $" + String.format("%.2f", chips.getPrice()));
                     bufferedWriter.newLine();
                 }
 

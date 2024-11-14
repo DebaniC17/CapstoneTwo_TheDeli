@@ -1,0 +1,44 @@
+Order receipt
+Date: 2024-11-14 16:31:03
+=======================================
+Product: BLT
+Price: $10.50
+Size8 inches
+Bread type: white
+Toasted: No
+Toppings:
+ - bacon (meat, premium) - $2.00
+ - cheddar (cheese, premium) - $1.50
+ - lettuce (vegetable, regular) - $0.00
+ - tomato (vegetable, regular) - $0.00
+ - ranch (sauce, regular) - $0.00
+---------------------------------------
+Product: Custom sandwich
+Price: $7.00
+Size4 inches
+Bread type: white
+Toasted: No
+Toppings:
+ - mayo (sauce, regular) - $0.00
+ - steak (meat, premium) - $1.50
+ - tomato (vegetable, regular) - $0.00
+---------------------------------------
+Product: Chips
+Price: $1.50
+Flavor: classic
+Total Price: $1.50
+---------------------------------------
+Product: Chips
+Price: $1.50
+Flavor: flaming hot
+Total Price: $1.50
+---------------------------------------
+Product: Drink
+Price: $2.00
+Flavor: sprite
+Size: medium
+Total Price: $2.00
+---------------------------------------
+=======================================
+Your total will be: $22.50
+=======================================

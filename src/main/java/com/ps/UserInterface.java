@@ -53,11 +53,11 @@ public class UserInterface {
             System.out.println("1) Add a sandwich");
             System.out.println("2) Add a bag of chips");
             System.out.println("3) Add a drink");
-            System.out.println("4) See your order details");
-            System.out.println("5) Checkout");
+            // System.out.println("4) See your order details");
+            System.out.println("4) Checkout");
             System.out.println("0) Start over");
             System.out.print("Selection: ");
-          //  orderCommand = inputScanner.nextInt();
+            //  orderCommand = inputScanner.nextInt();
 
             try {
                 orderCommand = commandScanner.nextInt();
@@ -78,11 +78,11 @@ public class UserInterface {
                     handleAddDrink();
                     break;
 
-                case 4:
-                    displayOrder();
-                    break;
+//                case 4:
+//                    displayOrder();
+//                    break;
 
-                case 5:
+                case 4:
                     handleCheckout();
                     break;
 
@@ -131,26 +131,30 @@ public class UserInterface {
                         System.out.println("Custom sandwich added to order.");
                         System.out.println("Would you like to customize it? (yes/no)");
 
+
                         if (inputScanner.nextLine().equalsIgnoreCase("yes")) {
                             customizeSandwich(sandwich);
+                            inputScanner.nextLine();
                         }
                         break;
 
                     case 2:
                         sandwich = new BLT();
-                        System.out.println("BLT selected. Would you like to customize it? (yes/no)");
-                        // inputScanner.nextLine();
+                        System.out.print("BLT selected. Would you like to customize it? (yes/no): ");
+
                         if (inputScanner.nextLine().equalsIgnoreCase("yes")) {
                             customizeSandwich(sandwich);
+                            inputScanner.nextLine();
                         }
                         break;
 
                     case 3:
                         sandwich = new PhillyCheeseSteak();
-                        System.out.println("Philly cheese steak selected. Would you like to customize it? (yes/no)");
-                        inputScanner.nextLine();
+                        System.out.print("Philly cheese steak selected. Would you like to customize it? (yes/no): ");
+
                         if (inputScanner.nextLine().equalsIgnoreCase("yes")) {
                             customizeSandwich(sandwich);
+                            inputScanner.nextLine();
                         }
                         break;
 
@@ -184,80 +188,112 @@ public class UserInterface {
 
             switch (customizeSandwichChoice) {
                 case 1:
-                    System.out.println("Enter topping name: ");
+                    System.out.print("Enter topping name: ");
+                    String toppingName = inputScanner.next().trim();
                     inputScanner.nextLine();
-                    String toppingName = inputScanner.nextLine();
-                    System.out.println("Enter topping type (meat, cheese, vegetable, sauce, sides): ");
+                    // String toppingName = inputScanner.nextLine();
+                    System.out.print("Enter topping type (meat, cheese, vegetable, sauce, sides): ");
                     String toppingType = inputScanner.nextLine();
-                    System.out.println("Enter topping category (regular, premium): ");
+                    System.out.print("Enter topping category (regular, premium): ");
                     String toppingCategory = inputScanner.nextLine();
-                  //  System.out.println("Enter size of sandwich (4, 8, 12): ");
-                  //  int size = inputScanner.nextInt();
-                  //  inputScanner.nextLine();
+                    int size = sandwich.getSize();
+
+//                    System.out.println("Enter size of sandwich (4, 8, 12): ");
+//                    int size = inputScanner.nextInt();
+//                    inputScanner.nextLine();
 
                     double basePrice = 0.0;
                     double extraPrice = 0.0;
 
                     if (toppingCategory.equalsIgnoreCase("premium")) {
-                        if (toppingType.equalsIgnoreCase("meat")) {
-                            System.out.println(sandwich.getSize());
-                            switch (sandwich.getSize()) {
-                                case 4:
-                                    basePrice = 1.00;
-                                    extraPrice = 0.50;
-                                    break;
-
-                                case 8:
-                                    basePrice = 2.00;
-                                    extraPrice = 1.00;
-                                    break;
-
-                                case 12:
-                                    basePrice = 3.00;
-                                    extraPrice = 1.50;
-                                    break;
-
-                                default:
-                                    System.out.println("Selection not found, please try again.");
-                                    break;
-                            }
-                        } else if (toppingType.equalsIgnoreCase("cheese")) {
-
-                            switch (sandwich.getSize()) {
-                                case 4:
-                                    basePrice = 0.75;
-                                    extraPrice = 0.30;
-                                    break;
-
-                                case 8:
-                                    basePrice = 1.50;
-                                    extraPrice = 0.60;
-                                    break;
-
-                                case 12:
-                                    basePrice = 2.25;
-                                    extraPrice = 0.90;
-                                    break;
-
-                                default:
-                                    System.out.println("Selection not found, please try again.");
-                                    break;
-                            }
+//                        if (toppingType.equalsIgnoreCase("meat")) {
+//                            System.out.println(sandwich.getSize());
+//                            switch (sandwich.getSize()) {
+//                                case 4:
+//                                    basePrice = 1.00;
+//                                    extraPrice = 0.50;
+//                                    break;
+//
+//                                case 8:
+//                                    basePrice = 2.00;
+//                                    extraPrice = 1.00;
+//                                    break;
+//
+//                                case 12:
+//                                    basePrice = 3.00;
+//                                    extraPrice = 1.50;
+//                                    break;
+//
+//                                default:
+//                                    System.out.println("Selection not found, please try again.");
+//                                    break;
+//                            }
+                        //  if (toppingCategory.equalsIgnoreCase("premium")) {
+                        //  int size = sandwich.getSize(); // Get size directly from sandwich
+                        switch (size) {
+                            case 4:
+                                basePrice = 1.00;
+                                extraPrice = 0.50;
+                                break;
+                            case 8:
+                                basePrice = 2.00;
+                                extraPrice = 1.00;
+                                break;
+                            case 12:
+                                basePrice = 3.00;
+                                extraPrice = 1.50;
+                                break;
+                            default:
+                                System.out.println("Size not recognized. Using default premium topping price.");
+                                break;
                         }
-                        System.out.println("Would you like extra " + toppingName + " ? (yes/no):");
-                        inputScanner.nextLine();
-                        String isExtra = inputScanner.nextLine();
 
-                        if (isExtra.equalsIgnoreCase("yes")) {
-                            basePrice += extraPrice;
 
+                    } else if (toppingType.equalsIgnoreCase("cheese")) {
+
+                        switch (sandwich.getSize()) {
+                            case 4:
+                                basePrice = 0.75;
+                                extraPrice = 0.30;
+                                break;
+
+                            case 8:
+                                basePrice = 1.50;
+                                extraPrice = 0.60;
+                                break;
+
+                            case 12:
+                                basePrice = 2.25;
+                                extraPrice = 0.90;
+                                break;
+
+                            default:
+                                System.out.println("Selection not found, please try again.");
+                                break;
                         }
                     } else if (toppingCategory.equalsIgnoreCase("regular")) {
                         System.out.println("Regular toppings are no additional cost.");
                         basePrice = 0.0;
                     }
+                    System.out.print("Would you like extra " + toppingName + " ? (yes/no):");
+                    //  inputScanner.nextLine();
+                    String isExtra = inputScanner.nextLine();
+                    // inputScanner.nextLine();
 
-                    Topping newTopping = new Topping(toppingName, toppingType, toppingCategory, sandwich.getSize());
+                    if (isExtra.equalsIgnoreCase("yes")) {
+                        basePrice += extraPrice;
+
+                    }
+//        } else if (toppingCategory.equalsIgnoreCase("regular")) {
+//            System.out.println("Regular toppings are no additional cost.");
+//            basePrice = 0.0;
+
+
+                    //System.out.println("Debug: Adding topping with name = '" + toppingName + "'");
+                    double finalToppingPrice = basePrice;
+                    // Topping newTopping = new Topping(toppingName, toppingType, toppingCategory, sandwich.getSize());
+                    Topping newTopping = new Topping(toppingName, toppingType, toppingCategory, sandwich.getSize(), finalToppingPrice);
+
                     sandwich.addTopping(newTopping);
                     System.out.println(toppingName + " has been added to sandwich.");
                     break;
@@ -275,19 +311,27 @@ public class UserInterface {
                     break;
 
                 case 3:
-                    boolean isToasted;
-                    System.out.println("Would you like your sandwich toasted? (yes/no): ");
-                    inputScanner.nextLine();
-                    String toastChoice = inputScanner.nextLine();
-                    isToasted = toastChoice.equalsIgnoreCase("yes");
+                   // boolean isToasted;
+//                    System.out.println("Would you like your sandwich toasted? (yes/no): ");
+//                    inputScanner.nextLine();
+//                    String toastChoice = inputScanner.nextLine();
+//                    isToasted = toastChoice.equalsIgnoreCase("yes");
+                        boolean isToasted = sandwich.isToasted();
 
                     if (sandwich instanceof BLT || sandwich instanceof PhillyCheeseSteak) {
-                        isToasted = true;
-                        System.out.println("This sandwich is usually toasted. Would you like for it to be not toasted? (yes/no): ");
-                        String overrideChoice = inputScanner.nextLine();
-                        if (overrideChoice.equalsIgnoreCase("yes")) {
+                      //  isToasted = true;
+                        System.out.print("This sandwich is usually toasted. Would you like for it to be not toasted? (yes/no): ");
+                     //   String overrideChoice = inputScanner.nextLine();
+//                        if (overrideChoice.equalsIgnoreCase("yes")) {
+//                            isToasted = false;
+//                        }
+                        if (inputScanner.nextLine().equalsIgnoreCase("yes")) {
                             isToasted = false;
                         }
+                    } else {
+                        System.out.println("Would you like your sandwich toasted? (yes/no): ");
+                        isToasted = inputScanner.nextLine().equalsIgnoreCase("yes");
+
                     }
                     sandwich.setToasted(isToasted);
                     break;
@@ -302,6 +346,7 @@ public class UserInterface {
 
     private static void handleAddBagOfChips() {
         int chipCommand;
+        commandScanner.nextLine();
         do {
             System.out.println("Choose a flavor of chips: ");
             System.out.println("1) Classic");
@@ -310,8 +355,8 @@ public class UserInterface {
             System.out.println("4) BBQ");
             System.out.println("0) Return to order menu");
             System.out.print("Selection: ");
-           // inputScanner.nextLine();
-          //  int chipChoice = inputScanner.nextInt();
+            // inputScanner.nextLine();
+            //  int chipChoice = inputScanner.nextInt();
             inputScanner.nextLine();
 
             try {
@@ -595,6 +640,7 @@ public class UserInterface {
         } while (checkout != 2 && checkout != 0);
 
     }
+
     private static void displayOrder() {
         System.out.println("Order details: ");
         double totalCost = 0.0;

@@ -1,0 +1,27 @@
+Order receipt
+Date: 2024-11-14 13:44:13
+=======================================
+Product: Custom sandwich
+Price: $6.50
+Size4 inches
+Bread type: wrap
+Toasted: No
+Toppings:
+ -  (vegetable, regular) - $0.00
+ - steak (meat, premium) - $1.00
+ - ranch (sauce, regular) - $0.00
+---------------------------------------
+Product: BLT
+Price: $8.50
+Size8 inches
+Bread type: white
+Toasted: Yes
+Toppings:
+ - cheddar (cheese, premium) - $1.50
+ - lettuce (vegetable, regular) - $0.00
+ - tomato (vegetable, regular) - $0.00
+ - ranch (sauce, regular) - $0.00
+---------------------------------------
+=======================================
+Your total will be: $15.00
+=======================================
