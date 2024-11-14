@@ -104,23 +104,28 @@ public class UserInterface {
 
         switch (sandwichChoice) {
             case 1:
-               customizeSandwich(sandwich);
-                System.out.println("Custom sandwich added to order.");
-                break;
-//                System.out.println("Enter sandwich size (4,8, or 12 inches): ");
-//                int size = inputScanner.nextInt();
-//                inputScanner.nextLine();
-//
-//                System.out.println("Enter bread type (white, wheat, rye, or wrap): ");
-//               // inputScanner.nextLine();
-//                String breadType = inputScanner.nextLine();
-//
-//                System.out.println("Do you want the sandwich toasted? (yes/no): ");
-//                boolean isToasted = inputScanner.nextLine().equalsIgnoreCase("yes");
-//
-//                sandwich = new Sandwich("Custom sandwich", 5.50, size, breadType, isToasted);
+//               customizeSandwich(sandwich);
 //                System.out.println("Custom sandwich added to order.");
 //                break;
+                System.out.println("Enter sandwich size (4,8, or 12 inches): ");
+                int size = inputScanner.nextInt();
+                inputScanner.nextLine();
+
+                System.out.println("Enter bread type (white, wheat, rye, or wrap): ");
+               // inputScanner.nextLine();
+                String breadType = inputScanner.nextLine();
+
+                System.out.println("Do you want the sandwich toasted? (yes/no): ");
+                boolean isToasted = inputScanner.nextLine().equalsIgnoreCase("yes");
+
+                sandwich = new Sandwich("Custom sandwich", 5.50, size, breadType, isToasted);
+                System.out.println("Custom sandwich added to order.");
+                System.out.println("Would you like to customize it? (yes/no)");
+
+                if (inputScanner.nextLine().equalsIgnoreCase("yes")) {
+                    customizeSandwich(sandwich);
+                }
+                break;
 
             case 2:
                 sandwich = new BLT();
