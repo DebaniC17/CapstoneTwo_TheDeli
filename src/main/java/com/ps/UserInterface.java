@@ -496,7 +496,7 @@ public class UserInterface {
                  break;
 
              default:
-                 System.out.println("Selection not found, please try again.")
+                 System.out.println("Selection not found, please try again.");
                  break;
          }
 
