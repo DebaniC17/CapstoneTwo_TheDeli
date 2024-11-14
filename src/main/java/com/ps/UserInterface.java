@@ -98,21 +98,24 @@ public class UserInterface {
         System.out.println("3) Philly cheese steak");
         System.out.print("Selection: ");
         int sandwichChoice = inputScanner.nextInt();
-        Sandwich sandwich = null;
-//        HashMap<Integer, Sandwich> sandwichOptions = new HashMap<>();
-//        sandwichOptions.put(2, new BLT());
-//        sandwichOptions.put(3,new PhillyCheeseSteak());
+        inputScanner.nextLine();
 
-//        if (sandwichChoice ==1) {
-//        Sandwich customSandwich = buildCustomSandwich();
-//        order.addProducts(customSandwich);
-//            System.out.println("Custom sandwich added to order.");
-//        } else if () {
-//
-//        }
+        Sandwich sandwich = null;
+
         switch (sandwichChoice) {
             case 1:
-                customizeSandwich(sandwich);
+               // customizeSandwich(sandwich);
+                System.out.println("Enter sandwich size (4,8, or 12 inches): ");
+                int size = inputScanner.nextInt();
+
+                System.out.println("Enter bread type (white, wheat, rye, or wrap)");
+                inputScanner.nextLine();
+                String breadType = inputScanner.nextLine();
+
+                System.out.println("Do you want the sandwich toasted? (yes/no)");
+                boolean isToasted = inputScanner.nextLine().equalsIgnoreCase("yes");
+
+                sandwich = new Sandwich("Custom sandwich", 5.50, size, breadType, isToasted);
                 System.out.println("Custom sandwich added to order.");
                 break;
 
@@ -154,20 +157,20 @@ public class UserInterface {
             System.out.println("0) Finish customization");
             System.out.print("Selection: ");
             customizeSandwichChoice = inputScanner.nextInt();
-            //inputScanner.nextLine():
+            inputScanner.nextLine();
 
             switch (customizeSandwichChoice) {
                 case 1:
                     System.out.println("Enter topping name: ");
-                    //  inputScanner.nextLine();
+                      inputScanner.nextLine();
                     String toppingName = inputScanner.nextLine();
-                    System.out.println("Enter topping type (meat, cheese, vegetable, sauce): ");
+                    System.out.println("Enter topping type (meat, cheese, vegetable, sauce, sides): ");
                     String toppingType = inputScanner.nextLine();
                     System.out.println("Enter topping category (regular, premium): ");
                     String toppingCategory = inputScanner.nextLine();
                     System.out.println("Enter size of sandwich (4, 8, 12): ");
                     int size = inputScanner.nextInt();
-                    //inputScanner.nextLine();
+                    inputScanner.nextLine();
 
                     double basePrice = 0.0;
                     double extraPrice = 0.0;
@@ -221,7 +224,7 @@ public class UserInterface {
                             }
                         }
                         System.out.println("Would you like extra " + toppingName + " ? (yes/no):");
-                        // inputScanner.nextLine();
+                         inputScanner.nextLine();
                         String isExtra = inputScanner.nextLine();
 
                         if (isExtra.equalsIgnoreCase("yes")) {
@@ -251,15 +254,15 @@ public class UserInterface {
                     break;
 
                 case 3:
-                    boolean isToasted = sandwich.isToasted();
+                    boolean isToasted;
                     System.out.println("Would you like your sandwich toasted? (yes/no): ");
-                    //  inputScanner.nextLine();
+                      inputScanner.nextLine();
                     String toastChoice = inputScanner.nextLine();
                     isToasted = toastChoice.equalsIgnoreCase("yes");
 
                     if (sandwich instanceof BLT || sandwich instanceof PhillyCheeseSteak) {
-                        //  isToasted = true;
-                        System.out.println("This sandwich is usually toasted. Would you like it not toasted? (yes/no): ");
+                          isToasted = true;
+                        System.out.println("This sandwich is usually toasted. Would you like for it to be not toasted? (yes/no): ");
                         String overrideChoice = inputScanner.nextLine();
                         if (overrideChoice.equalsIgnoreCase("yes")) {
                             isToasted = false;
@@ -287,6 +290,7 @@ public class UserInterface {
             System.out.println("0) Return to order menu");
             System.out.print("Selection: ");
             int chipChoice = inputScanner.nextInt();
+            inputScanner.nextLine();
 
             try {
                 chipCommand = commandScanner.nextInt();
@@ -327,12 +331,19 @@ public class UserInterface {
             order.addProducts(chips);
             System.out.println(flavor + " chips added to order.");
 
-            System.out.println("Would you like to add another bag of chips?");
-            System.out.println("1) for yes");
-            System.out.println("2) for no");
-            chipCommand = inputScanner.nextInt();
+            System.out.println("Would you like to add another bag of chips? (yes/no)");
+           // System.out.println("1) for yes");
+           // System.out.println("2) for no");
+            String addAnother = inputScanner.nextLine().toLowerCase();
+
+            if (!addAnother.equalsIgnoreCase("yes")) {
+                break;
+            }
+           // chipCommand = inputScanner.nextInt();
         } while (chipCommand == 1);
+
     }
+
 
     private static void handleAddDrink() {
         int drinkChoice;
@@ -348,6 +359,7 @@ public class UserInterface {
 
             try {
                 drinkChoice = inputScanner.nextInt();
+                inputScanner.nextLine();
             } catch (InputMismatchException ime) {
                 System.out.println("Selection not found, please try again.");
                 inputScanner.nextLine();
@@ -380,7 +392,8 @@ public class UserInterface {
 
                 default:
                     System.out.println("Selection not found, please try again.");
-                    return;
+                  //  return;
+                    continue;
             }
             System.out.println("Choose a size: ");
             System.out.println("1) Small");
@@ -394,6 +407,7 @@ public class UserInterface {
             int drinkSizeChoice;
             try {
                 drinkSizeChoice = inputScanner.nextInt();
+                inputScanner.nextLine();
             } catch (InputMismatchException ime) {
                 System.out.println("Selection not found, please try again.");
                 inputScanner.nextLine();
@@ -426,6 +440,12 @@ public class UserInterface {
             order.addProducts(drink);
             System.out.println(size + " " + flavor + " added to order.");
 
+            System.out.println("Would you like to add another drink? (yes/no): ");
+            String addAnother = inputScanner.nextLine().toLowerCase();
+
+            if (!addAnother.equalsIgnoreCase("yes")) {
+                break;
+            }
         } while (true);
     }
 
@@ -437,8 +457,7 @@ public class UserInterface {
             System.out.println("Product: " + product.getName());
             System.out.println("Price: $" + String.format("%.2f", product.getBasePrice()));
 
-            if (product instanceof Sandwich) {
-                Sandwich sandwich = (Sandwich) product;
+            if (product instanceof Sandwich sandwich) {
                 System.out.println("Size: " + sandwich.getSize() + " inches");
                 System.out.println("Bread type: " + sandwich.getBreadType());
                 System.out.println("Toasted: " + (sandwich.isToasted() ? "Yes" : "No"));
@@ -453,13 +472,11 @@ public class UserInterface {
                 }
 
 
-            } else if (product instanceof Drink) {
-                Drink drink = (Drink) product;
+            } else if (product instanceof Drink drink) {
                 System.out.println("Flavor: " + drink.getFlavor());
                 System.out.println("Size: " + drink.getSize());
 
-            } else if (product instanceof BagOfChip) {
-                BagOfChip chips = (BagOfChip) product;
+            } else if (product instanceof BagOfChip chips) {
                 System.out.println("Flavor: " + chips.getFlavor());
             }
             System.out.println();
@@ -469,36 +486,43 @@ public class UserInterface {
     }
 
     private static void handleCheckout() {
-        int checkout;
-
-        System.out.println("What would you like to do with your order?");
-        System.out.println("1) Place order");
-        System.out.println("0) Start over");
-        System.out.print("Selection: ");
-
-        try {
-            checkout = inputScanner.nextInt();
-        } catch (InputMismatchException ime) {
-            System.out.println("Selection not found, please try again.");
-            inputScanner.nextLine();
-            return;
-        }
-         switch (checkout) {
-             case 1:
-                 System.out.println("Finalizing your order...");
-                 //save order method from receiptmanager
-                 System.out.println("Your order has been saved. Thank you, it will come out shortly!");
-                 order = new Order();
-                 break;
-
-             case 0:
-                 System.out.println("Starting over...");
-                 break;
-
-             default:
-                 System.out.println("Selection not found, please try again.");
-                 break;
-         }
-
+//        int checkout;
+//
+//        System.out.println("What would you like to do with your order?");
+//        System.out.println("1) Place order");
+//        System.out.println("0) Start over");
+//        System.out.print("Selection: ");
+//
+//        try {
+//            checkout = inputScanner.nextInt();
+//        } catch (InputMismatchException ime) {
+//            System.out.println("Selection not found, please try again.");
+//            inputScanner.nextLine();
+//            return;
+//        }
+//         switch (checkout) {
+//             case 1:
+//                 System.out.println("Finalizing your order...");
+//                 //save order method from receiptmanager
+//                 ReciptManager.saveOrderReceipt(order);
+//                 System.out.println("Your order has been saved. Thank you, it will come out shortly!");
+//                 order = new Order();
+//                 break;
+//
+//             case 0:
+//                 System.out.println("Starting over...");
+//                 break;
+//
+//             default:
+//                 System.out.println("Selection not found, please try again.");
+//                 break;
+//         }
+//
+//    }
+        System.out.println("Finalizing your order...");
+        //save order method from receiptmanager
+        ReciptManager.saveOrderReceipt(order);
+        System.out.println("Your order has been saved. Thank you, it will come out shortly!");
+        order = new Order();
     }
 }

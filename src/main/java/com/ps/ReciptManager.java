@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ReciptManager {
 
-    public void saveOrderReceipt(Order order) {
+    public static void saveOrderReceipt(Order order) {
         File receiptDir = new File("receipts");
 
         //to make sure the folder exits
