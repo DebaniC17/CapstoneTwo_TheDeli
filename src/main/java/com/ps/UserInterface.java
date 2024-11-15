@@ -273,7 +273,7 @@ public class UserInterface {
                     break;
 
                 case 3:
-                        boolean isToasted = sandwich.isToasted();
+                    boolean isToasted = sandwich.isToasted();
 
                     if (sandwich instanceof BLT || sandwich instanceof PhillyCheeseSteak) {
 

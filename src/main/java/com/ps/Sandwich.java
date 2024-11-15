@@ -47,9 +47,6 @@ public class Sandwich extends Product {
     public void addTopping(Topping topping) {
         toppings.add(topping);
     }
-//    public void removeTopping(Topping topping) {
-//        toppings.remove(topping);
-//    }
 
     public boolean removeTopping(String toppingName) {
         for (int i =0; i < toppings.size(); i++) {

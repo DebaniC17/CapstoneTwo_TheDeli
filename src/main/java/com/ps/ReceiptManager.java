@@ -31,7 +31,7 @@ public class ReceiptManager {
             bufferedWriter.write("Date: " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
             bufferedWriter.newLine();
             bufferedWriter.write("=======================================");
-           bufferedWriter.newLine();
+            bufferedWriter.newLine();
             double totalPrice = 0.0;
 
             for (Product product : order.getProducts()) {
@@ -42,9 +42,9 @@ public class ReceiptManager {
 
                 if (product instanceof Sandwich sandwich) {
                     bufferedWriter.write("Size: " + sandwich.getSize() + " inches");
-                   bufferedWriter.newLine();
+                    bufferedWriter.newLine();
                     bufferedWriter.write("Bread type: " + sandwich.getBreadType());
-                   bufferedWriter.newLine();
+                    bufferedWriter.newLine();
                     bufferedWriter.write("Toasted: " + (sandwich.isToasted() ? "Yes" : "No"));
                     bufferedWriter.newLine();
 
@@ -69,7 +69,7 @@ public class ReceiptManager {
 
                 } else if (product instanceof Drink drink) {
                     bufferedWriter.write("Flavor: " + drink.getFlavor());
-                   bufferedWriter.newLine();
+                    bufferedWriter.newLine();
                     bufferedWriter.write("Size: " + drink.getSize());
                     bufferedWriter.newLine();
                     bufferedWriter.write("Price: $" + String.format("%.2f", drink.getPrice()));
@@ -97,6 +97,6 @@ public class ReceiptManager {
             System.out.println("Failed to save receipt" + e.getMessage());
 
         }
-            // with a try-with-resources statement, the resources are automatically closed, so no need to write bufferedWriter.close();
+        // with a try-with-resources statement, the resources are automatically closed, so no need to write bufferedWriter.close();
     }
 }

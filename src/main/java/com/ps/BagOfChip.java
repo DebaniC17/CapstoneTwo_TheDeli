@@ -1,7 +1,7 @@
 package com.ps;
 
-public class BagOfChip extends Product{
- private String flavor;
+public class BagOfChip extends Product {
+    private String flavor;
 
     public BagOfChip(String name, double basePrice, String flavor) {
         super(name, basePrice);
@@ -15,6 +15,7 @@ public class BagOfChip extends Product{
     public void setFlavor(String flavor) {
         this.flavor = flavor;
     }
+
     @Override
     public double getPrice() {
         return getBasePrice();

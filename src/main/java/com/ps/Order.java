@@ -11,6 +11,7 @@ public class Order {
         this.products = new ArrayList<>();
         this.toppings = new ArrayList<>();
     }
+
     public void addProducts(Product product) {
         products.add(product);
     }
@@ -18,27 +19,28 @@ public class Order {
     public void addTopping(Topping topping) {
         toppings.add(topping);
     }
+
     public List<Product> getProducts() {
         return this.products;
     }
+
     public List<Topping> getToppings() {
         return this.toppings;
     }
+
     public void saveToFile() {
 
     }
+
     public double getTotalPrice() {
         double totalPrice = 0;
         for (Product product : products) {
             totalPrice += product.getPrice();
         }
-        for (Topping topping: toppings) {
+        for (Topping topping : toppings) {
             totalPrice += topping.getPrice();
         }
-       return totalPrice;
+        return totalPrice;
     }
 
-//    public void add(BagOfChip chips) {
-//    addProducts(chips);
-//    }
 }
