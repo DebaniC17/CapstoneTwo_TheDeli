@@ -20,7 +20,6 @@ public class UserInterface {
             System.out.println("1) To place an order");
             System.out.println("0) Exit application");
             System.out.print("Command: ");
-            // mainCommand = commandScanner.nextInt();
 
             try {
                 mainCommand = commandScanner.nextInt();
@@ -57,11 +56,9 @@ public class UserInterface {
             System.out.println("1) Add a sandwich");
             System.out.println("2) Add a bag of chips");
             System.out.println("3) Add a drink");
-            // System.out.println("4) See your order details");
             System.out.println("4) Checkout");
             System.out.println("0) Start over");
             System.out.print("Selection: ");
-            //  orderCommand = inputScanner.nextInt();
 
             try {
                 orderCommand = commandScanner.nextInt();
@@ -72,7 +69,7 @@ public class UserInterface {
 
             switch (orderCommand) {
                 case 1:
-                    handleAddSandwich();
+                    handleAddSandwichSelection();
                     break;
 
                 case 2:
@@ -82,10 +79,6 @@ public class UserInterface {
                 case 3:
                     handleAddDrink();
                     break;
-
-//                case 4:
-//                    displayOrder();
-//                    break;
 
                 case 4:
                     handleCheckout();
@@ -101,8 +94,7 @@ public class UserInterface {
 
     }
 
-    private static void handleAddSandwich() {
-        //another nested menu for built your own sandwich
+    private static void handleAddSandwichSelection() {
         Sandwich sandwich = null;
 
         do {
@@ -116,21 +108,13 @@ public class UserInterface {
                 System.out.println("=======================================");
                 inputScanner.nextLine();
 
-
-                // Sandwich sandwich = null;
-
                 switch (sandwichChoice) {
                     case 1:
-//               customizeSandwich(sandwich);
-//                System.out.println("Custom sandwich added to order.");
-//                break;
-                       // System.out.println("=======================================");
                         System.out.println("Enter sandwich size (4,8, or 12 inches): ");
                         int size = inputScanner.nextInt();
                         inputScanner.nextLine();
 
                         System.out.println("Enter bread type (white, wheat, rye, or wrap): ");
-                        // inputScanner.nextLine();
                         String breadType = inputScanner.nextLine();
 
                         System.out.println("Do you want the sandwich toasted? (yes/no): ");
@@ -145,7 +129,6 @@ public class UserInterface {
                             System.out.println("=======================================");
                             customizeSandwich(sandwich);
                             inputScanner.nextLine();
-                           // System.out.println("=======================================");
                         }
                         break;
 
@@ -191,7 +174,6 @@ public class UserInterface {
     private static void customizeSandwich(Sandwich sandwich) {
         int customizeSandwichChoice;
         do {
-          //  System.out.println("---------------------------------------");
             System.out.println("Select what you would like to customize from your " + sandwich.getName() + ":");
             System.out.println("1) Add topping");
             System.out.println("2) Remove topping");
@@ -207,45 +189,18 @@ public class UserInterface {
                     System.out.print("Enter topping name: ");
                     String toppingName = inputScanner.next().trim();
                     inputScanner.nextLine();
-                    // String toppingName = inputScanner.nextLine();
+
                     System.out.print("Enter topping type (meat, cheese, vegetable, sauce, sides): ");
                     String toppingType = inputScanner.nextLine();
+
                     System.out.print("Enter topping category (regular, premium): ");
                     String toppingCategory = inputScanner.nextLine();
                     int size = sandwich.getSize();
-
-//                    System.out.println("Enter size of sandwich (4, 8, 12): ");
-//                    int size = inputScanner.nextInt();
-//                    inputScanner.nextLine();
 
                     double basePrice = 0.0;
                     double extraPrice = 0.0;
 
                     if (toppingCategory.equalsIgnoreCase("premium")) {
-//                        if (toppingType.equalsIgnoreCase("meat")) {
-//                            System.out.println(sandwich.getSize());
-//                            switch (sandwich.getSize()) {
-//                                case 4:
-//                                    basePrice = 1.00;
-//                                    extraPrice = 0.50;
-//                                    break;
-//
-//                                case 8:
-//                                    basePrice = 2.00;
-//                                    extraPrice = 1.00;
-//                                    break;
-//
-//                                case 12:
-//                                    basePrice = 3.00;
-//                                    extraPrice = 1.50;
-//                                    break;
-//
-//                                default:
-//                                    System.out.println("Selection not found, please try again.");
-//                                    break;
-//                            }
-                        //  if (toppingCategory.equalsIgnoreCase("premium")) {
-                        //  int size = sandwich.getSize(); // Get size directly from sandwich
                         switch (size) {
                             case 4:
                                 basePrice = 1.00;
@@ -263,7 +218,6 @@ public class UserInterface {
                                 System.out.println("Size not recognized. Using default premium topping price.");
                                 break;
                         }
-
 
                     } else if (toppingType.equalsIgnoreCase("cheese")) {
 
@@ -292,26 +246,15 @@ public class UserInterface {
                         basePrice = 0.0;
                     }
                     System.out.print("Would you like extra " + toppingName + " ? (yes/no):");
-                    //  inputScanner.nextLine();
                     String isExtra = inputScanner.nextLine();
-                  //  System.out.println("=======================================");
-
-                    // inputScanner.nextLine();
 
                     if (isExtra.equalsIgnoreCase("yes")) {
                         basePrice += extraPrice;
-
+                        sandwich.addExtraCost(extraPrice);
                     }
-//        } else if (toppingCategory.equalsIgnoreCase("regular")) {
-//            System.out.println("Regular toppings are no additional cost.");
-//            basePrice = 0.0;
 
-
-                    //System.out.println("Debug: Adding topping with name = '" + toppingName + "'");
                     double finalToppingPrice = basePrice;
-                    // Topping newTopping = new Topping(toppingName, toppingType, toppingCategory, sandwich.getSize());
                     Topping newTopping = new Topping(toppingName, toppingType, toppingCategory, sandwich.getSize(), finalToppingPrice);
-
                     sandwich.addTopping(newTopping);
                     System.out.println(toppingName + " has been added to sandwich.");
                     System.out.println("=======================================");
@@ -322,7 +265,6 @@ public class UserInterface {
                     String toppingToRemove = inputScanner.nextLine();
                     if (sandwich.removeTopping(toppingToRemove)) {
                         System.out.println("=======================================");
-                        //  System.out.println(toppingToRemove + " has been removed from sandwich.");
 
                     } else {
                         System.out.println("Topping not found, please try again.");
@@ -331,20 +273,12 @@ public class UserInterface {
                     break;
 
                 case 3:
-                   // boolean isToasted;
-//                    System.out.println("Would you like your sandwich toasted? (yes/no): ");
-//                    inputScanner.nextLine();
-//                    String toastChoice = inputScanner.nextLine();
-//                    isToasted = toastChoice.equalsIgnoreCase("yes");
                         boolean isToasted = sandwich.isToasted();
 
                     if (sandwich instanceof BLT || sandwich instanceof PhillyCheeseSteak) {
-                      //  isToasted = true;
+
                         System.out.print("This sandwich is usually toasted. Would you like for it to be not toasted? (yes/no): ");
-                     //   String overrideChoice = inputScanner.nextLine();
-//                        if (overrideChoice.equalsIgnoreCase("yes")) {
-//                            isToasted = false;
-//                        }
+
                         if (inputScanner.nextLine().equalsIgnoreCase("yes")) {
                             System.out.println("=======================================");
                             isToasted = false;
@@ -377,8 +311,6 @@ public class UserInterface {
             System.out.println("4) BBQ");
             System.out.println("0) Return to order menu");
             System.out.print("Selection: ");
-            // inputScanner.nextLine();
-            //  int chipChoice = inputScanner.nextInt();
             inputScanner.nextLine();
 
             try {
@@ -397,19 +329,19 @@ public class UserInterface {
             String flavor = "";
             switch (chipCommand) {
                 case 1:
-                    flavor = ("classic");
+                    flavor = ("Classic");
                     break;
 
                 case 2:
-                    flavor = ("flaming hot");
+                    flavor = ("Flaming hot");
                     break;
 
                 case 3:
-                    flavor = ("jalapeno");
+                    flavor = ("Jalapeno");
                     break;
 
                 case 4:
-                    flavor = ("bbq");
+                    flavor = ("BBQ");
                     break;
 
 
@@ -438,12 +370,6 @@ public class UserInterface {
                 chipCommand = 2;
             }
 
-//            String addAnother = inputScanner.nextLine().toLowerCase();
-//
-//            if (!addAnother.equalsIgnoreCase("yes")) {
-//                break;
-//            }
-            // chipCommand = inputScanner.nextInt();
         } while (chipCommand == 1);
 
     }
@@ -459,7 +385,6 @@ public class UserInterface {
             System.out.println("4) Dr Pepper");
             System.out.println("0) Return to order menu");
             System.out.print("Selection: ");
-            // int drinkChoice = inputScanner.nextInt();
 
             try {
                 drinkChoice = inputScanner.nextInt();
@@ -469,7 +394,7 @@ public class UserInterface {
                 System.out.println("Selection not found, please try again.");
                 inputScanner.nextLine();
                 continue;
-                // drinkChoice = 0;
+
             }
 
             if (drinkChoice == 0) {
@@ -480,19 +405,19 @@ public class UserInterface {
             String flavor = "";
             switch (drinkChoice) {
                 case 1:
-                    flavor = ("coke");
+                    flavor = ("Coke");
                     break;
 
                 case 2:
-                    flavor = ("sprite");
+                    flavor = ("Sprite");
                     break;
 
                 case 3:
-                    flavor = ("lemonade");
+                    flavor = ("Lemonade");
                     break;
 
                 case 4:
-                    flavor = ("dr pepper");
+                    flavor = ("Dr Pepper");
                     break;
 
                 default:
@@ -505,14 +430,10 @@ public class UserInterface {
             System.out.println("2) Medium");
             System.out.println("3) Large");
             System.out.print("Selection: ");
-            //int drinkSizeChoice = inputScanner.nextInt();
-
-            // int drinkSizeChoice;
 
             int drinkSizeChoice;
             try {
                 drinkSizeChoice = inputScanner.nextInt();
-              //  System.out.println("---------------------------------------");
                 inputScanner.nextLine();
             } catch (InputMismatchException ime) {
                 System.out.println("Selection not found, please try again.");
@@ -524,17 +445,17 @@ public class UserInterface {
 
             switch (drinkSizeChoice) {
                 case 1:
-                    size = ("small");
+                    size = ("Small");
                     price = 2.00;
                     break;
 
                 case 2:
-                    size = ("medium");
+                    size = ("Medium");
                     price = 2.50;
                     break;
 
                 case 3:
-                    size = ("large");
+                    size = ("Large");
                     price = 3.00;
                     break;
 
@@ -569,49 +490,8 @@ public class UserInterface {
         } while (true);
     }
 
-//    private static void displayOrder() {
-//        System.out.println("Order details: ");
-//        double totalCost = 0.0;
-//
-//        for (Product product : order.getProducts()) {
-//            System.out.println("Product: " + product.getName());
-//            System.out.println("Price: $" + String.format("%.2f", product.getBasePrice()));
-//
-//            if (product instanceof Sandwich sandwich) {
-//                System.out.println("Size: " + sandwich.getSize() + " inches");
-//                System.out.println("Bread type: " + sandwich.getBreadType());
-//                System.out.println("Toasted: " + (sandwich.isToasted() ? "Yes" : "No"));
-//
-//                List<Topping> toppings = sandwich.getToppings();
-//                if (toppings != null && !toppings.isEmpty()) {
-//                    System.out.println("Toppings: ");
-//                    for (Topping topping : toppings) {
-//                        System.out.println(" " + topping.getName() + " (" + topping.getCategory() + ") " + String.format("%.2f", topping.getPrice()));
-//
-//                    }
-//                }
-//
-//
-//            } else if (product instanceof Drink drink) {
-//                System.out.println("Flavor: " + drink.getFlavor());
-//                System.out.println("Size: " + drink.getSize());
-//
-//            } else if (product instanceof BagOfChip chips) {
-//                System.out.println("Flavor: " + chips.getFlavor());
-//            }
-//            System.out.println();
-//            totalCost += product.getPrice();
-//        }
-//        System.out.println("Total price for order: $" + String.format("%.2f", totalCost));
-//    }
-
     private static void handleCheckout() {
         int checkout;
-
-//        System.out.println("Are you sure you wanna finalize your order?: ");
-//        System.out.println("1) Place order");
-//        System.out.println("0) Start over");
-//        System.out.print("Selection: ");
 
         do {
             System.out.println("You are in the checkout menu. What would you like to do with your order?: ");
@@ -629,23 +509,7 @@ public class UserInterface {
                 inputScanner.nextLine();
                 return;
             }
-//         switch (checkout) {
-//             case 1:
-//                 System.out.println("Finalizing your order...");
-//                 //save order method from receiptmanager
-//                 ReciptManager.saveOrderReceipt(order);
-//                 System.out.println("Your order has been saved. Thank you, it will come out shortly!");
-//                 order = new Order();
-//                 break;
-//
-//             case 0:
-//                 System.out.println("Starting over...");
-//                 break;
-//
-//             default:
-//                 System.out.println("Selection not found, please try again.");
-//                 break;
-//         }
+
             switch (checkout) {
                 case 1:
                     displayOrder();
@@ -661,9 +525,6 @@ public class UserInterface {
                     break;
 
                 case 3:
-//                    System.out.println("Returning to order menu...");
-//                    System.out.println("=======================================");
-//                    break;
                     System.out.println("Starting order over and returning to order menu...");
                     System.out.println("=======================================");
                     order = new Order();

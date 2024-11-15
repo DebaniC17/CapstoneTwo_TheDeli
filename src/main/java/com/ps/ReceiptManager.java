@@ -62,6 +62,11 @@ public class ReceiptManager {
                             bufferedWriter.newLine();
                         }
                     }
+                    if (sandwich.getExtraCost() > 0) {
+                        bufferedWriter.write("Extra customization cost: $" + String.format("%.2f", sandwich.getExtraCost()));
+                        bufferedWriter.newLine();
+                    }
+
                 } else if (product instanceof Drink drink) {
                     bufferedWriter.write("Flavor: " + drink.getFlavor());
                    bufferedWriter.newLine();

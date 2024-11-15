@@ -8,6 +8,7 @@ public class Sandwich extends Product {
     private String breadType;
     private boolean isToasted;
     private List<Topping> toppings;
+    private double extraCost = 0.0;
 
     public Sandwich(String name, double basePrice, int size, String breadType, boolean isToasted) {
         super(name, basePrice);
@@ -62,6 +63,12 @@ public class Sandwich extends Product {
         System.out.println("Topping " + toppingName + " not found.");
         return false;
     }
+    public void addExtraCost(double cost) {
+        this.extraCost =+ cost;
+    }
+    public double getExtraCost() {
+        return extraCost;
+    }
 
 
     //get price override method
@@ -80,9 +87,8 @@ public class Sandwich extends Product {
         for (Topping topping : toppings) {
             basePrice += topping.getPrice();
         }
+        basePrice += extraCost;
+
         return basePrice;
     }
-
-   // public String getSandwichType() {
-    //}
 }

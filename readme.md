@@ -92,6 +92,12 @@ The user has the option to:
 ## Receipt 
 ![receipt](images%2FReceipt.png)
 
+With a full meal
+
+![receipt with extra premium](images%2Freceipt%20with%20extra%20premium.png)
+
+With extra meat
+
 ## Resources
 
 Here are some links for creating my buffered writer:
@@ -105,6 +111,8 @@ Here are some links for if statements inside of switch cases:
 
 ## Interesting piece of code
 ![Interesting code making folder](images%2FInteresting%20code%20making%20folder.png)
+
+
 This code creates a File object for the "receipts" directory. If the directory doesn’t exist (!receiptDir.exists()), it tries to create it using receiptDir.mkdirs(). If the directory creation fails, it outputs an error message.
 Then since my bufferedWriter is created inside the parentheses of the try statement. When the try block completes (even if an exception occurs), BufferedWriter is automatically closed.
 
