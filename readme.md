@@ -24,6 +24,9 @@ The **DELIcious Sandwich Shop** is an application for the company to use to keep
 - **ReceiptManager**: Handles saving the order receipt to a file
 - **Pricing**: Interface for defining pricing methods
 
+## My diagram
+![diagram (1)](images%2Fdiagram%20%281%29.png)
+
 ## Menus
 ### **Main menu** 
 The user can choose to:
