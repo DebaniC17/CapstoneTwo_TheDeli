@@ -5,6 +5,8 @@ The **DELIcious Sandwich Shop** is an application for the company to use to keep
 
 ## Features
 - **Receipt generator** : Saves an order receipt to a folder based on current date and time. 
+- **Customize sandwich** : Add extra meat, undo toasted on signature sandwiches, remove/add toppings
+- **Start new order** : In the checkout menu, the user can choose to completely start a new order from scratch
 
 
 ## Project Layout
