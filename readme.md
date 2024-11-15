@@ -96,11 +96,16 @@ The user has the option to:
 
 Here are some links for creating my buffered writer:
 - [create a folder and how to have separate files move into it](https://stackoverflow.com/questions/16269563/how-to-save-a-file-to-a-directory)
+- [difference between try and try-with-resources](https://medium.com/thefreshwrites/how-to-use-try-with-resource-in-java-9c0b4ae48d21#:~:text=This%20is%20because%20an%20IOException,as%20JVM%20automatically%20closes%20them.)
+- [more info on try-with-resources](https://docs.oracle.com/javase/8/docs/technotes/guides/language/try-with-resources.html)
+- [info on the mkdirs() method](https://www.geeksforgeeks.org/file-mkdirs-method-in-java-with-examples/)
 
 Here are some links for if statements inside of switch cases:
 - [simple example](https://stackoverflow.com/questions/60049457/refactor-switch-statement-using-an-object-vs-primitive-data-type)
 
 ## Interesting piece of code
+![Interesting code making folder](images%2FInteresting%20code%20making%20folder.png)
+This code creates a File object for the "receipts" directory. If the directory doesn’t exist (!receiptDir.exists()), it tries to create it using receiptDir.mkdirs(). If the directory creation fails, it outputs an error message.
+Then since my bufferedWriter is created inside the parentheses of the try statement. When the try block completes (even if an exception occurs), BufferedWriter is automatically closed.
 
-
-  )
+  
