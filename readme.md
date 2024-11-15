@@ -50,6 +50,14 @@ The use can customize the sandwich by:
 - Removing toppings
 - Change toasted options
 
+## **Bag of chips menu**
+The user can choose to add
+- Multiple bags of chips based on flavor
+
+## **Drink menu**
+The user can choose to add
+- Multiple drinks based on flavor and size
+
 ### **Checkout menu**
 The user has the option to:
 - Display order
@@ -60,21 +68,29 @@ The user has the option to:
 # Screenshots
 
 ## Main menu
+![main menu](images%2FMain%20menu.png)
 
 ## Order menu
-
+![order menu](images%2FOrder%20menu.png)
 
 ## Sandwich selection menu
-
+![sandwich selection menu](images%2FSandwich%20selection%20menu.png)
 
 ## Customization menu
+![customization menu](images%2FCustomization%20menu%20.png)
 
+## Chips menu
+![chips menu](images%2FChip%20menu.png)
+
+## Drink menu
+![drink menu](images%2FDrink%20menu.png)
 
 ## Checkout menu
-
+![checkout menu](images%2FCheck%20out%20menu%20and%20display%20order%20pt%201.png)
+![Display order pt 2](images%2FDisplay%20order%20pt%202.png)
 
 ## Receipt 
-
+![receipt](images%2FReceipt.png)
 
 ## Resources
 
