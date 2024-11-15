@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class ReciptManager {
+public class ReceiptManager {
 
     public static void saveOrderReceipt(Order order) {
         //making of the folder

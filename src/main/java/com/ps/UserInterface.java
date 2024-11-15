@@ -617,7 +617,7 @@ public class UserInterface {
 
                 case 2:
                     System.out.println("Finalizing your order...");
-                    ReciptManager.saveOrderReceipt(order);
+                    ReceiptManager.saveOrderReceipt(order);
                     System.out.println("Your order has been saved. Thank you, it will come out shortly!");
                     order = new Order();
                     System.exit(0);
